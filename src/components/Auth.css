@@ -1,0 +1,358 @@
+:root {
+  --bg-light: #f4f6fb;
+  --bg-dark: #0f172a;
+
+  --card-light: #ffffff;
+  --card-dark: #1e293b;
+
+  --primary-light: #6366f1;
+  --primary-dark: #818cf8;
+
+  --accent-light: #8b5cf6;
+  --accent-dark: #a78bfa;
+
+  --text-light: #111827;
+  --text-dark: #f1f5f9;
+
+  --input-light: #f1f5f9;
+  --input-dark: #334155;
+}
+
+/* ===== Global ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ===== Background Gradient ===== */
+body.light {
+  background: linear-gradient(135deg, #e0e7ff, #f4f6fb);
+}
+
+body.dark {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* ===== Card ===== */
+.auth-container {
+  width: 380px;
+  padding: 40px;
+  border-radius: 22px;
+  backdrop-filter: blur(15px);
+  animation: fadeIn 0.6s ease;
+}
+
+body.light .auth-container {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+body.dark .auth-container {
+  background: rgba(30, 41, 59, 0.85);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Title ===== */
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+body.light h2 {
+  color: var(--text-light);
+}
+
+body.dark h2 {
+  color: var(--text-dark);
+}
+
+/* ===== Inputs ===== */
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  outline: none;
+  font-size: 14px;
+}
+
+/* Light */
+body.light input {
+  background: var(--input-light);
+  color: var(--text-light);
+}
+
+/* Dark */
+body.dark input {
+  background: var(--input-dark);
+  color: white;
+}
+
+/* Focus Effect */
+.input-group input:focus {
+  border: 2px solid var(--primary-light);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+  transform: scale(1.02);
+}
+
+body.dark .input-group input:focus {
+  border: 2px solid var(--primary-dark);
+  box-shadow: 0 0 15px rgba(129, 140, 248, 0.5);
+}
+
+/* ===== Main Button ===== */
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--primary-light),
+    var(--accent-light)
+  );
+}
+
+body.dark .auth-btn {
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark),
+    var(--accent-dark)
+  );
+}
+
+.auth-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5);
+}
+
+.auth-btn:active {
+  transform: scale(0.97);
+}
+
+/* ===== Divider ===== */
+.divider {
+  text-align: center;
+  margin: 22px 0;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* ===== Social Buttons ===== */
+.social-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.social-buttons button {
+  flex: 1;
+  padding: 11px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Google */
+.google-btn {
+  background: #ffffff;
+  color: #444;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.google-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .google-btn {
+  background: #334155;
+  color: white;
+}
+
+/* Facebook */
+.facebook-btn {
+  background: #1877f2;
+  color: white;
+}
+
+.facebook-btn:hover {
+  background: #145ed0;
+  transform: translateY(-2px);
+}
+
+/* ===== Switch Text ===== */
+.switch-text {
+  text-align: center;
+  font-size: 14px;
+}
+
+body.light .switch-text {
+  color: var(--text-light);
+}
+
+body.dark .switch-text {
+  color: var(--text-dark);
+}
+
+.switch-text span {
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+}
+
+body.light .switch-text span {
+  color: var(--primary-light);
+}
+
+body.dark .switch-text span {
+  color: var(--primary-dark);
+}
+
+.switch-text span:hover {
+  text-decoration: underline;
+}
+
+/* ===== Toggle Switch ===== */
+/* ===== Floating Dark Mode Toggle ===== */
+/* ===== FIX: Toggle nằm góc màn hình ===== */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Button style đẹp hơn */
+.theme-toggle button {
+  padding: 10px 16px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+  transition: 0.3s ease;
+}
+
+.theme-toggle button:hover {
+  transform: scale(1.08);
+}
+/* ===== Password Toggle ===== */
+
+.password-group {
+  position: relative;
+}
+
+.password-group input {
+  padding-right: 45px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: 0.2s ease;
+}
+
+.password-toggle:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+body.dark .password-toggle {
+  color: white;
+}
+
+
+/* ===== Input Text Style ===== */
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-family: "Segoe UI", "Inter", sans-serif;
+
+  color: #222;
+  background: #f9f9f9;
+
+  transition: all 0.3s ease;
+}
+
+/* Khi focus */
+.input-group input:focus {
+  border: 1px solid #6c63ff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+/* Placeholder đẹp hơn */
+.input-group input::placeholder {
+  color: #999;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Dark mode */
+body.dark .input-group input {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+body.dark .input-group input::placeholder {
+  color: #aaa;
+}
+
+body.dark .input-group input:focus {
+  border: 1px solid #8f88ff;
+  box-shadow: 0 0 0 3px rgba(143, 136, 255, 0.2);
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
