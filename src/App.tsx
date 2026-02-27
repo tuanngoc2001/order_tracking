@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Layout from "./Layout";
+import Home from "./pages/Home";
+import Stats from "./pages/Stats";
 import "./components/Auth.css";
 
 function App() {
@@ -31,8 +35,27 @@ function App() {
     }
   }, [darkMode]);
 
+  // return (
+  //   <>
+  //     {/* Nút toggle góc màn hình */}
+  //     <div className="theme-toggle">
+  //       <button onClick={() => setDarkMode(!darkMode)}>
+  //         {darkMode ? "☀ Light" : "🌙 Dark"}
+  //       </button>
+  //     </div>
+
+  //     {isLogin ? (
+  //       <Login switchToRegister={() => setIsLogin(false)} />
+  //     ) : (
+  //       <Register switchToLogin={() => setIsLogin(true)} />
+  //     )}
+  //   </>
+  // );
   return (
-    <>
+    <BrowserRouter>
+      <Routes>
+        
+        <Route path="/" element={<>
       {/* Nút toggle góc màn hình */}
       <div className="theme-toggle">
         <button onClick={() => setDarkMode(!darkMode)}>
@@ -45,8 +68,16 @@ function App() {
       ) : (
         <Register switchToLogin={() => setIsLogin(true)} />
       )}
-    </>
+    </>} />
+         <Route element={<Layout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/stats" element={<Stats />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
+  
+  
 }
 
 export default App;
